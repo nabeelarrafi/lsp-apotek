@@ -18,18 +18,18 @@ class DetailPembelianController extends Controller
     }
 
 public function create()
-    { 
-    return view( 
-    'detail_pembelian.create', [ 
+    {
+    return view(
+    'detail_pembelian.create', [
     'pembelian' => Pembelian::all(),
     'obat' => Obat::all()
         ]);
     }
 
 public function store(Request $request)
-    { 
+    {
     $request->validate([
-    'tgl_kadarluarsa' => 'required', 
+    'tgl_kadarluarsa' => 'required',
     'harga_beli'=> 'required',
     'jumlah_beli'=> 'required',
     'sub_total_beli'=> 'required',
@@ -38,9 +38,9 @@ public function store(Request $request)
     'id_obat'=> 'required'
     ]);
     $array = $request->only([
-    'tgl_kadarluarsa', 
-    'harga_beli', 
-    'jumlah_beli', 
+    'tgl_kadarluarsa',
+    'harga_beli',
+    'jumlah_beli',
     'sub_total_beli',
     'persen_margin_jual',
     'id_pembelian',
@@ -57,14 +57,14 @@ public function edit($id)
     return view('detail_pembelian.edit', [
     'detail_pembelian' => $detail_pembelian,
     'pembelian' => Pembelian::all(),
-    'obat' => Obat::all() 
+    'obat' => Obat::all()
     ]);
     }
 
-public function update(Request $request, $id)
+public function update(Request $request, Int $id)
     {
         $request->validate([
-            'tgl_kadarluarsa' => 'required', 
+            'tgl_kadarluarsa' => 'required',
             'harga_beli'=> 'required',
             'jumlah_beli'=> 'required',
             'sub_total_beli'=> 'required',
@@ -72,15 +72,26 @@ public function update(Request $request, $id)
             'id_pembelian'=> 'required',
             'id_obat'=> 'required'
             ]);
-            $detail_pembelian = DetailPembelian::find($id);
-            $detail_pembelian->tgl_kadarluarsa = $request->tgl_kadarluarsa;
-            $detail_pembelian->harga_beli = $request->harga_beli;
-            $detail_pembelian->jumlah_beli = $request->jumlah_beli;
-            $detail_pembelian->sub_total_beli = $request->sub_total_beli;
-            $detail_pembelian->persen_margin_jual = $request->persen_margin_jual;
-            $detail_pembelian->id_pembelian = $request->id_pembelian;
-            $detail_pembelian->id_obat = $request->id_obat;
-            $detail_pembelian->save();
+            // $detail_pembelian = DetailPembelian::find($id);
+
+            $array = $request->only([
+                'tgl_kadarluarsa',
+                'harga_beli',
+                'jumlah_beli',
+                'sub_total_beli',
+                'persen_margin_jual',
+                'id_pembelian',
+                'id_obat'
+                ]);
+            DetailPembelian::where('id', $id)->update($array);
+            // $detail_pembelian->tgl_kadarluarsa = $request->tgl_kadarluarsa;
+            // $detail_pembelian->harga_beli = $request->harga_beli;
+            // $detail_pembelian->jumlah_beli = $request->jumlah_beli;
+            // $detail_pembelian->sub_total_beli = $request->sub_total_beli;
+            // $detail_pembelian->persen_margin_jual = $request->persen_margin_jual;
+            // $detail_pembelian->id_pembelian = $request->id_pembelian;
+            // $detail_pembelian->id_obat = $request->id_obat;
+            // $detail_pembelian->save();
             return redirect()->route('detail_pembelian.index')->with('success_message', 'Berhasil mengubah Detail Pembelian');
     }
 
