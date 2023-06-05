@@ -19,17 +19,17 @@
                             name="nonota_beli" value="{{$pembelian->nonota_beli ?? old('nonota_beli')}}">
                         @error('nonota_beli') <span class="textdanger">{{$message}}</span> @enderror
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="tgl_beli">Tanggal Beli</label>
-                        <input type="datetime-local" class="form-control 
+                        <input type="datetime-local" class="form-control
 @error('tgl_beli') is-invalid @enderror" id="tgl_beli" placeholder="Tanggal Beli" name="tgl_beli" value="{{$pembelian->tgl_beli ?? old('tgl_beli')}}">
                         @error('tgl_beli') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="total_beli">Total Beli</label>
-                        <input type="number" class="form-control 
+                        <input type="number" class="form-control
 @error('total_beli') is-invalid @enderror" id="total_beli" placeholder="Total Beli" name="total_beli" value="{{$pembelian->total_beli ?? old('total_beli')}}">
                         @error('total_beli') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
@@ -37,7 +37,7 @@
                     <div class="form-group">
                         <label for="id_distributor">Nama Distributor</label>
                         <div class="input-group">
-                            <input type="hidden" name="id_distributor" id="id_distributor" value="{{$pembelian->fdistributor->nama_distributor ?? old('nama_distributor')}}">
+                            <input type="hidden" name="id_distributor" id="id_distributor" value="{{$pembelian->id_distributor ?? old('id_distributor')}}">
                             <input type="text" class="form-control
 @error('nama_distributor') is-invalid @enderror" placeholder="ID Distributor" id="nama_distributor" name="nama_distributor" value="{{$pembelian->fdistributor->nama_distributor ?? old('nama_distributor')}}" arialabel="Alamat" aria-describedby="cari" readonly>
                             <button class="btn btn-warning" type="button" data-bs-toggle="modal" id="cari" data-bs-target="#staticBackdrop"></i>
@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <label for="id_user">Nama User</label>
                         <div class="input-group">
-                            <input type="hidden" name="id_user" id="id_user" value="{{$pembelian->fuser->name ?? old('name')}}">
+                            <input type="hidden" name="id_user" id="id_user" value="{{$pembelian->id_user ?? old('id_user')}}">
                             <input type="text" class="form-control
 @error('name') is-invalid @enderror" placeholder="Nama User" id="name" name="name" value="{{$pembelian->fuser->name ?? old('name')}}" arialabel="Email" aria-describedby="cari" readonly>
                             <button class="btn btn-warning" type="button" data-bs-toggle="modal" id="cari" data-bs-target="#staticBackdrop1"></i>
@@ -90,7 +90,7 @@
                                 <td>{{$distributor->nama_distributor}}</td>
                                 <td>{{$distributor->alamat}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-xs" 
+                                    <button type="button" class="btn btn-primary btn-xs"
                                         onclick="pilih('{{$distributor->id}}', '{{$distributor->nama_distributor}}')" data-bs-dismiss="modal">
                                         Pilih
                                     </button>
@@ -129,7 +129,7 @@
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-xs" 
+                                    <button type="button" class="btn btn-primary btn-xs"
                                         onclick="pilih1('{{$user->id}}', '{{$user->name}}')" data-bs-dismiss="modal">
                                         Pilih
                                     </button>

@@ -19,17 +19,17 @@
                             name="jumlah_jual" value="{{$detail_penjualan->jumlah_jual ?? old('jumlah_jual')}}">
                         @error('jumlah_jual') <span class="textdanger">{{$message}}</span> @enderror
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="harga_jual">Harga Jual</label>
-                        <input type="text" class="form-control 
+                        <input type="text" class="form-control
 @error('harga_jual') is-invalid @enderror" id="harga_jual" placeholder="Harga Jual" name="harga_jual" value="{{$detail_penjualan->harga_jual ?? old('harga_jual')}}">
                         @error('harga_jual') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="sub_total_jual">Sub Total Jual</label>
-                        <input type="number" class="form-control 
+                        <input type="number" class="form-control
 @error('sub_total_jual') is-invalid @enderror" id="sub_total_jual" placeholder="Sub Total Jual" name="sub_total_jual" value="{{$detail_penjualan->sub_total_jual ?? old('sub_total_jual')}}">
                         @error('sub_total_jual') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
@@ -37,7 +37,7 @@
                     <div class="form-group">
                         <label for="id_penjualan">No. Penjualan</label>
                         <div class="input-group">
-                            <input type="hidden" name="id_penjualan" id="id_penjualan" value="{{$detail_penjualan->fpenjualan->nonota_jual ?? old('nonota_jual')}}">
+                            <input type="hidden" name="id_penjualan" id="id_penjualan" value="{{$detail_penjualan->id_penjualan ?? old('id_penjualan')}}">
                             <input type="text" class="form-control
 @error('nonota_jual') is-invalid @enderror" placeholder="No. Penjualan" id="nonota_jual" name="nonota_jual" value="{{$detail_penjualan->fpenjualan->nonota_jual ?? old('nonota_jual')}}" arialabel="Alamat" aria-describedby="cari" readonly>
                             <button class="btn btn-warning" type="button" data-bs-toggle="modal" id="cari" data-bs-target="#staticBackdrop"></i>
@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <label for="id_obat">Nama Obat</label>
                         <div class="input-group">
-                            <input type="hidden" name="id_obat" id="id_obat" value="{{$detail_penjualan->fobat->nama_obat ?? old('nama_obat')}}">
+                            <input type="hidden" name="id_obat" id="id_obat" value="{{$detail_penjualan->id_obat ?? old('id_obat')}}">
                             <input type="text" class="form-control
 @error('nama_obat') is-invalid @enderror" placeholder="Nama Obat" id="nama_obat" name="nama_obat" value="{{$detail_penjualan->fobat->nama_obat ?? old('nama_obat')}}" arialabel="Email" aria-describedby="cari" readonly>
                             <button class="btn btn-warning" type="button" data-bs-toggle="modal" id="cari" data-bs-target="#staticBackdrop1"></i>
@@ -92,7 +92,7 @@
                                 <td>{{$penjualan->tgl_jual}}</td>
                                 <td>{{$penjualan->total_jual}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-xs" 
+                                    <button type="button" class="btn btn-primary btn-xs"
                                         onclick="pilih('{{$penjualan->id}}', '{{$penjualan->nonota_jual}}')" data-bs-dismiss="modal">
                                         Pilih
                                     </button>
@@ -133,7 +133,7 @@
                                 <td>{{$obat->merk}}</td>
                                 <td>{{$obat->jenis}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-xs" 
+                                    <button type="button" class="btn btn-primary btn-xs"
                                         onclick="pilih1('{{$obat->id}}', '{{$obat->nama_obat}}')" data-bs-dismiss="modal">
                                         Pilih
                                     </button>

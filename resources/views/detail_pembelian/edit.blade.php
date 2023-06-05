@@ -19,31 +19,31 @@
                             name="tgl_kadarluarsa" value="{{$detail_pembelian->tgl_kadarluarsa ?? old('tgl_kadarluarsa')}}">
                         @error('tgl_kadarluarsa') <span class="textdanger">{{$message}}</span> @enderror
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="harga_beli">Harga Beli</label>
-                        <input type="text" class="form-control 
+                        <input type="text" class="form-control
 @error('harga_beli') is-invalid @enderror" id="harga_beli" placeholder="Harga Beli" name="harga_beli" value="{{$detail_pembelian->harga_beli ?? old('harga_beli')}}">
                         @error('harga_beli') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="jumlah_beli">Jumlah Beli</label>
-                        <input type="number" class="form-control 
+                        <input type="number" class="form-control
 @error('jumlah_beli') is-invalid @enderror" id="jumlah_beli" placeholder="Jumlah Beli" name="jumlah_beli" value="{{$detail_pembelian->jumlah_beli ?? old('jumlah_beli')}}">
                         @error('jumlah_beli') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="sub_total_beli">Sub Total Beli</label>
-                        <input type="number" class="form-control 
+                        <input type="number" class="form-control
 @error('sub_total_beli') is-invalid @enderror" id="sub_total_beli" placeholder="Sub Total Beli" name="sub_total_beli" value="{{$detail_pembelian->sub_total_beli ?? old('sub_total_beli')}}">
                         @error('sub_total_beli') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="persen_margin_jual">Persen Margin Jual</label>
-                        <input type="number" class="form-control 
+                        <input type="number" class="form-control
 @error('persen_margin_jual') is-invalid @enderror" id="persen_margin_jual" placeholder="Persen Margin Jual" name="persen_margin_jual" value="{{$detail_pembelian->persen_margin_jual ?? old('persen_margin_jual')}}">
                         @error('persen_margin_jual') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
@@ -51,7 +51,7 @@
                     <div class="form-group">
                         <label for="id_pembelian">No. Pembelian</label>
                         <div class="input-group">
-                            <input type="hidden" name="id_pembelian" id="id_pembelian" value="{{$detail_pembelian->fpembelian->nonota_beli ?? old('nonota_beli')}}">
+                            <input type="hidden" name="id_pembelian" id="id_pembelian" value="{{$detail_pembelian->id_pembelian ?? old('id_pembelian')}}">
                             <input type="text" class="form-control
 @error('nonota_beli') is-invalid @enderror" placeholder="No. Pembelian" id="nonota_beli" name="nonota_beli" value="{{$detail_pembelian->fpembelian->nonota_beli ?? old('nonota_beli')}}" arialabel="Alamat" aria-describedby="cari" readonly>
                             <button class="btn btn-warning" type="button" data-bs-toggle="modal" id="cari" data-bs-target="#staticBackdrop"></i>
@@ -62,7 +62,7 @@
                     <div class="form-group">
                         <label for="id_obat">Nama Obat</label>
                         <div class="input-group">
-                            <input type="hidden" name="id_obat" id="id_obat" value="{{$detail_pembelian->fobat->nama_obat ?? old('nama_obat')}}">
+                            <input type="hidden" name="id_obat" id="id_obat" value="{{$detail_pembelian->id_obat ?? old('id_obat')}}">
                             <input type="text" class="form-control
 @error('nama_obat') is-invalid @enderror" placeholder="Nama Obat" id="nama_obat" name="nama_obat" value="{{$detail_pembelian->fobat->nama_obat ?? old('nama_obat')}}" arialabel="Email" aria-describedby="cari" readonly>
                             <button class="btn btn-warning" type="button" data-bs-toggle="modal" id="cari" data-bs-target="#staticBackdrop1"></i>
@@ -106,7 +106,7 @@
                                 <td>{{$pembelian->tgl_beli}}</td>
                                 <td>{{$pembelian->total_beli}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-xs" 
+                                    <button type="button" class="btn btn-primary btn-xs"
                                         onclick="pilih('{{$pembelian->id}}', '{{$pembelian->nonota_beli}}')" data-bs-dismiss="modal">
                                         Pilih
                                     </button>
@@ -147,7 +147,7 @@
                                 <td>{{$obat->merk}}</td>
                                 <td>{{$obat->jenis}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-xs" 
+                                    <button type="button" class="btn btn-primary btn-xs"
                                         onclick="pilih1('{{$obat->id}}', '{{$obat->nama_obat}}')" data-bs-dismiss="modal">
                                         Pilih
                                     </button>
