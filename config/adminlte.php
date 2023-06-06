@@ -360,15 +360,22 @@ return [
         ],
 
         [
-            'header' => 'List Data',
+            'header' => 'List Data Laporan',
             'can' => 'pemilik-only'
         ],
         [
-            'text' => 'Laporan',
-            'url'  => '/laporan',
+            'text' => 'Laporan Pembelian',
+            'url'  => '/detail_pembelian',
             'icon' => 'fa fa-th-list',
             'can'  => 'pemilik-only',
         ],
+        [
+            'text' => 'Laporan Penjualan',
+            'url' => '/detail_penjualan',
+            'icon' => 'fa fa-th-list',
+            'can' => 'pemilik-only',
+        ],
+
         // [
         //     'type' => 'sidebar-menu-search',
         //     'text' => 'search',

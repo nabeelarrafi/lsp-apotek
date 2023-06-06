@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\DetailPenjualan;
 use App\Models\Penjualan;
 use App\Models\Obat;
 use Illuminate\Http\Request;
-
+use PDF;
 class DetailPenjualanController extends Controller
 {
     public function index()
@@ -81,5 +80,13 @@ public function update(Request $request, $id)
         $detail_penjualan = DetailPenjualan::find($id);
         if ($detail_penjualan) $detail_penjualan->delete();
         return redirect()->route('detail_penjualan.index')->with('success_message', 'Berhasil menghapus detail penjualan');
+    }
+
+    public function exportpdf2(){
+        $data = DetailPenjualan::all();
+    
+        view()->share('data',$data);
+        $pdf = PDF::loadview('detailpenjualan-pdf');
+        return $pdf->download('Datadetailpenjualan.pdf');
     }
 }

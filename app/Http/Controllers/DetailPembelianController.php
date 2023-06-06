@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\DetailPembelian;
 use App\Models\Pembelian;
 use App\Models\Obat;
+use PDF;
 use Illuminate\Http\Request;
 
 class DetailPembelianController extends Controller
@@ -100,5 +100,12 @@ public function update(Request $request, Int $id)
         $detail_pembelian = DetailPembelian::find($id);
         if ($detail_pembelian) $detail_pembelian->delete();
         return redirect()->route('detail_pembelian.index')->with('success_message', 'Berhasil menghapus detail pembelian');
+    }
+
+    public function exportpdf(){
+        $data = DetailPembelian::all();
+        view()->share('data',$data);
+        $pdf = PDF::loadview('detailpembelian-pdf');
+        return $pdf->download('Datadetailpembelian.pdf');
     }
 }

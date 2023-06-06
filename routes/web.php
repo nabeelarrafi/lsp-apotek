@@ -17,12 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
-
 Route::get('/home', function() {return view('home');
 })->name('home')->middleware('auth');
 Route::resource('users', \App\Http\Controllers\UserController::class)->middleware('auth');
@@ -32,3 +29,5 @@ Route::resource('penjualan', \App\Http\Controllers\PenjualanController::class)->
 Route::resource('pembelian', \App\Http\Controllers\PembelianController::class)->middleware('auth');
 Route::resource('detail_penjualan', \App\Http\Controllers\DetailPenjualanController::class)->middleware('auth');
 Route::resource('detail_pembelian', \App\Http\Controllers\DetailPembelianController::class)->middleware('auth');
+Route::get('/exportpdf', [App\Http\Controllers\DetailPembelianController::class, 'exportpdf'])->name('exportpdf');
+Route::get('/exportpdf2', [App\Http\Controllers\DetailPenjualanController::class, 'exportpdf2'])->name('exportpdf2');

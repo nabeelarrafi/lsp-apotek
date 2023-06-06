@@ -34,8 +34,16 @@ body {
   text-align: center;
   padding: 20px;
   background-color: #fff;
+  transition: transform .4s;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.content:hover{
+  transform: scale(1.5);
+  background-color: #007bff;
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 1);
 }
 
 .logo {
@@ -44,15 +52,14 @@ body {
 }
 
 .title {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .subtitle {
-  font-size: 16px;
-  color: #666;
-  margin-bottom: 30px;
+  font-size: 30px;
+  margin-bottom: 20px;
 }
 
 .links {
@@ -77,7 +84,8 @@ body {
 }
 
 .welcome:hover {
-  background-color: #0056b3;
+  background-color: #fff;
+  color: #6f6f6f;
 }
 
 </style>

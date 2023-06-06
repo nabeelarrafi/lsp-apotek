@@ -54,6 +54,7 @@
 <script>
 $('#example2').DataTable({
     "responsive": true,
+    
 });
 
 function notificationBeforeDelete(event, el, dt) {

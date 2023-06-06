@@ -8,8 +8,15 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
+            @can('pemilik-only')
+                <a href="/exportpdf" class="btn btn-info mb-2">
+                Export Pdf
+                </a>
+                @endcan
+                @can('gudang-only')
                 <a href="{{route('detail_pembelian.create')}}" class="btn btn-primary mb-2">Tambah
                 </a>
+                @endcan
                 <table class="table table-hover table-bordered table-stripped" id="example2">
                     <thead>
                         <tr>
@@ -21,7 +28,7 @@
                             <th>Persen Margin Jual</th>
                             <th>No. Pembelian</th>
                             <th>Nama Obat</th>
-                            <th>Opsi</th>
+                            @can('gudang-only')<th>Opsi</th>@endcan
                         </tr>
                     </thead>
                     <tbody>
@@ -35,6 +42,7 @@
                             <td>{{$sk->persen_margin_jual}}</td>
                             <td>{{$sk->fpembelian->nonota_beli}}</td>
                             <td>{{$sk->fobat->nama_obat}}</td>
+                            @can('gudang-only')
                             <td>
                                 <a href="{{route('detail_pembelian.edit', $sk)}}" class="btn btn-primary btn-xs">
                                     Edit
@@ -43,6 +51,7 @@
                                     Delete
                                 </a>
                             </td>
+                            @endcan
                         </tr>
                         @endforeach
                     </tbody>
