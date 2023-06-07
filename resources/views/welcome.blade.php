@@ -32,18 +32,10 @@ body {
 
 .content {
   text-align: center;
-  padding: 20px;
+  padding: 30px;
   background-color: #fff;
-  transition: transform .4s;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.content:hover{
-  transform: scale(1.5);
-  background-color: #007bff;
-  color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 1);
 }
 
 .logo {
@@ -52,13 +44,14 @@ body {
 }
 
 .title {
-  font-size: 30px;
-  font-weight: 600;
-  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 10px;
+  margin-bottom: 10px;
 }
 
 .subtitle {
-  font-size: 30px;
+  font-size: 16px;
+  color: #666;
   margin-bottom: 20px;
 }
 
@@ -84,21 +77,20 @@ body {
 }
 
 .welcome:hover {
-  background-color: #fff;
-  color: #6f6f6f;
+  background-color: #0056b3;
 }
 
 </style>
 <body>
     <div class="container">
         <div class="content">
-            <h1 class="title">WELCOME !</h1>
+            <h1 class="title">Welcome @can('pemilik-only')<b>back!</b>@endcan</h1>
             <p class="subtitle">pharmacy backoffice application</p>
             <div class="links">
                 @if (Route::has('login'))
                 <div class="welcome-page">
                     @auth
-                        <a href="{{ url('/home') }}" class="welcome">Go to Dashboard</a>
+                        <a href="{{ url('/home') }}" class="welcome">Go to Dasboard</a>
                     @else
                         <a href="{{ route('login') }}" class="welcome">Sign In</a>
                         @if (Route::has('register'))

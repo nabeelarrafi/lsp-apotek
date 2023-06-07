@@ -21,7 +21,7 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Tanggal Kadarluarsa</th>
+                            <th>Tanggal Kadaluarsa</th>
                             <th>Harga Beli</th>
                             <th>Jumlah Beli</th>
                             <th>Sub Total Beli</th>

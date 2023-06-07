@@ -151,11 +151,26 @@
     $('#example1').DataTable({
         "responsive": true,
     });
+    let idPenjualan = document.getElementById('id_penjualan');
+    let noNotaJual = document.getElementById('nonota_jual');
+    let hargaJual = document.getElementById('harga_jual');
+    let jumlahJual = document.getElementById('jumlah_jual');
+    let subTotalJual = document.getElementById('sub_total_jual');
+
+
+    jumlahJual.addEventListener('change', function(){
+        return subTotalJual.value = this.value*hargaJual.value; 
+    })
+
+    hargaJual.addEventListener('change', function(){
+        return subTotalJual.value = this.value*jumlahJual.value; 
+    })
+
     //Fungsi pilih untuk memilih data bidang studi dan mengirimkan data Bidang Studi dari Modal ke form tambah
 
     function pilih(id, penjualan) {
-        document.getElementById('id_penjualan').value = id
-        document.getElementById('nonota_jual').value = penjualan
+        idPenjualan.value = id
+        noNotaJual.value = penjualan
     }
 
 

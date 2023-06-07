@@ -27,32 +27,31 @@
 </style>
 </head>
 <body>
-<h1 style="text-align: center;">Data Detail Pembelian</h1>
+<h1 style="text-align: center;">Laporan Detail Pembelian</h1>
 <table class="table table-hover table-bordered table-stripped" id="customers">
 <tr>
                         <th>No.</th>
-                        <th>Id Pembelian</th>
-                        <th>Tanggal Kadaluarsa</th>
+                        <th>No Nota Beli</th>
+                        <th>Nama Obat</th>
                         <th>Harga Beli</th>
                         <th>Jumlah Beli</th>
-                        <th>Sub Total beli</th>
                         <th>Persen Margin Jual</th>
-                        <th>Kode Obat</th>
-                            </tr>
+                        <th>Sub Total beli</th>
+                        <th>Tanggal Kadaluarsa</th>
+</tr>
 @php
 $no=1;
 @endphp   
 @foreach($data as $key => $sk)
 <tr>
-                            <td>{{$no++}}</td>
-                            <td>{{ $key + 1 }}</td>
-                            <td>{{ $sk->nonota_beli }}</td>
-                            <td>{{ $sk->tgl_kadaluarsa }}</td>
-                            <td>{{ $sk->harga_beli }}</td>
-                            <td>{{ $sk->jumlah_beli }}</td>
-                            <td>{{ $sk->sub_total_beli }}</td>
-                            <td>{{ $sk->persen_margin_jual }}</td>
+<td>{{$key+1}}</td>
+                            <td>{{$sk->fpembelian->nonota_beli}}</td>
                             <td>{{$sk->fobat->nama_obat}}</td>
+                            <td>{{$sk->harga_beli}}</td>
+                            <td>{{$sk->jumlah_beli}}</td>
+                            <td>{{$sk->persen_margin_jual}}</td>
+                            <td>{{$sk->sub_total_beli}}</td>
+                            <td>{{$sk->tgl_kadarluarsa}}</td>
 </tr>          
 @endforeach
 </table>

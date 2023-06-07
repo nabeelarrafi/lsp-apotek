@@ -144,14 +144,19 @@
     @stop
     @push('js')
     <script>
+    // Initialize DataTables
     $('#example1').DataTable({
         "responsive": true,
     });
+
+    let namaDistributor = document.getElementById('nama_distributor');
+    let idDistributor = document.getElementById('id_distributor');
+
     //Fungsi pilih untuk memilih data bidang studi dan mengirimkan data Bidang Studi dari Modal ke form tambah
 
     function pilih(id, distributor) {
-        document.getElementById('id_distributor').value = id
-        document.getElementById('nama_distributor').value = distributor
+        idDistributor.value = id
+        namaDistributor.value = distributor
     }
 
 

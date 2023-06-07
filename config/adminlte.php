@@ -89,8 +89,8 @@ return [
             'path' => 'vendor/adminlte/dist/img/apotek.png',
             'alt' => 'Auth Logo',
             'class' => '',
-            'width' => 80,
-            'height' => 80,
+            'width' => 50,
+            'height' => 50,
         ],
     ],
 
@@ -112,8 +112,8 @@ return [
             'path' => 'vendor/adminlte/dist/img/apotek.png',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
-            'width' => 150,
-            'height' => 100,
+            'width' => 60,
+            'height' => 60,
         ],
     ],
 

@@ -8,8 +8,14 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
+            @can('pemilik-only')
+            <a href="/exportpdf2" class="btn btn-info mb-2">
+                        Export Pdf
+                    </a>
+                    @endcan
+                @can('kasir-only')
                 <a href="{{route('detail_penjualan.create')}}" class="btn btn-primary mb-2">Tambah
-                </a>
+                </a>@endcan
                 <table class="table table-hover table-bordered table-stripped" id="example2">
                     <thead>
                         <tr>
@@ -19,7 +25,7 @@
                             <th>Sub Total Jual</th>
                             <th>No. Penjualan</th>
                             <th>Nama Obat</th>
-                            <th>Opsi</th>
+                            @can('kasir-only')<th>Opsi</th>@endcan
                         </tr>
                     </thead>
                     <tbody>
@@ -31,14 +37,14 @@
                             <td>{{$sk->sub_total_jual}}</td>
                             <td>{{$sk->fpenjualan->nonota_jual}}</td>
                             <td>{{$sk->fobat->nama_obat}}</td>
-                            <td>
+                            @can('kasir-only')<td>
                                 <a href="{{route('detail_penjualan.edit', $sk)}}" class="btn btn-primary btn-xs">
                                     Edit
                                 </a>
                                 <a href="{{route('detail_penjualan.destroy', $sk)}}" onclick="notificationBeforeDelete(event, this, <?php echo $key+1; ?>)" class="btn btn-danger btn-xs">
                                     Delete
                                 </a>
-                            </td>
+                            </td>@endcan
                         </tr>
                         @endforeach
                     </tbody>
