@@ -21,13 +21,13 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Tanggal Kadaluarsa</th>
+                            <th>Nama Obat</th>
                             <th>Harga Beli</th>
                             <th>Jumlah Beli</th>
-                            <th>Sub Total Beli</th>
                             <th>Persen Margin Jual</th>
+                            <th>Sub Total Beli</th>
                             <th>No. Pembelian</th>
-                            <th>Nama Obat</th>
+                            <th>Tanggal Kadaluarsa</th>
                             @can('gudang-only')<th>Opsi</th>@endcan
                         </tr>
                     </thead>
@@ -35,13 +35,13 @@
                         @foreach($detail_pembelian as $key => $sk)
                         <tr>
                             <td>{{$key+1}}</td>
-                            <td>{{$sk->tgl_kadarluarsa}}</td>
+                            <td>{{$sk->fobat->nama_obat}}</td>
                             <td>{{$sk->harga_beli}}</td>
                             <td>{{$sk->jumlah_beli}}</td>
-                            <td>{{$sk->sub_total_beli}}</td>
                             <td>{{$sk->persen_margin_jual}}</td>
+                            <td>{{$sk->sub_total_beli}}</td>
                             <td>{{$sk->fpembelian->nonota_beli}}</td>
-                            <td>{{$sk->fobat->nama_obat}}</td>
+                            <td>{{$sk->tgl_kadarluarsa}}</td>
                             @can('gudang-only')
                             <td>
                                 <a href="{{route('detail_pembelian.edit', $sk)}}" class="btn btn-primary btn-xs">
