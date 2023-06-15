@@ -13,13 +13,12 @@ return new class extends Migration
     {
         //
         DB::unprepared('
-            CREATE TRIGGER total_penjualan_delete 
+            CREATE TRIGGER total_penjualan_delete
             AFTER DELETE
             ON `detail_penjualan` FOR EACH ROW
             BEGIN
-                UPDATE `penjualan`
-                SET total_jual = (SELECT SUM(jumlah_jual) FROM `detail_penjualan` WHERE id_penjualan = OLD.id_penjualan)
-                WHERE id = OLD.id_penjualan;
+                CALL sum_total_penjualan(OLD.id_penjualan);
+                CALL plus_obat(OLD.jumlah_jual, OLD.id_obat);
             END
         ');
     }

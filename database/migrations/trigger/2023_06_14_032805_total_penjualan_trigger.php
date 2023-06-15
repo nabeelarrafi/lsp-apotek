@@ -14,17 +14,16 @@ return new class extends Migration
     {
         //
         DB::unprepared('
-        CREATE TRIGGER total_penjualan 
-        AFTER INSERT
-        ON `detail_penjualan` FOR EACH ROW
-        BEGIN
-            IF NEW.jumlah_jual IS NOT NULL THEN
-                UPDATE `penjualan`
-                SET total_jual = (SELECT SUM(jumlah_jual) FROM `detail_penjualan` WHERE id_penjualan = NEW.id_penjualan)
-                WHERE id = NEW.id_penjualan;
-            END IF;
-        END
-    ');
+            CREATE TRIGGER total_penjualan
+            AFTER INSERT
+            ON `detail_penjualan` FOR EACH ROW
+            BEGIN
+                IF NEW.jumlah_jual IS NOT NULL THEN
+                    CALL sum_total_penjualan(NEW.id_penjualan);
+                    CALL minus_obat(NEW.jumlah_jual, NEW.id_obat);
+                END IF;
+            END
+        ');
     }
 
     /**

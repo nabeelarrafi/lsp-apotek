@@ -14,14 +14,13 @@ return new class extends Migration
     {
         //
         DB::unprepared('
-            CREATE TRIGGER total_pembelian 
+            CREATE TRIGGER total_pembelian
             AFTER INSERT
             ON `detail_pembelian` FOR EACH ROW
             BEGIN
                 IF NEW.jumlah_beli IS NOT NULL THEN
-                    UPDATE `pembelian`
-                    SET total_beli = (SELECT SUM(jumlah_beli) FROM `detail_pembelian` WHERE id_pembelian = NEW.id_pembelian)
-                    WHERE id = NEW.id_pembelian;
+                    CALL sum_total_pembelian(NEW.id_pembelian);
+                    CALL plus_obat(NEW.jumlah_beli, NEW.id_obat);
                 END IF;
             END
         ');

@@ -14,13 +14,15 @@ return new class extends Migration
     {
         //
         DB::unprepared('
-            CREATE TRIGGER total_pembelian_delete
-            AFTER DELETE
-            ON `detail_pembelian` FOR EACH ROW
-            BEGIN
-                CALL sum_total_pembelian(OLD.id_pembelian);
-                CALL minus_obat(OLD.jumlah_beli, OLD.id_obat);
-            END
+            CREATE PROCEDURE plus_obat(
+                jumlahObat INT,
+                idObat INT
+            )
+                BEGIN
+                    UPDATE `obat`
+                    SET STOK = STOK + jumlahObat
+                    WHERE id = idObat;
+                END
         ');
     }
 
@@ -30,6 +32,6 @@ return new class extends Migration
     public function down(): void
     {
         //
-        DB::unprepared('DROP TRIGGER `total_pembelian_delete`');
+        DB::unprepared('DROP PROCEDURE IF EXISTS plus_obat');
     }
 };
