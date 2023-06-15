@@ -2,9 +2,8 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Support\Facades\DB;
 return new class extends Migration
 {
     /**
@@ -14,15 +13,13 @@ return new class extends Migration
     {
         //
         DB::unprepared('
-            CREATE TRIGGER min_stock_obat_penjualan
-            AFTER INSERT
+            CREATE TRIGGER total_penjualan_delete 
+            AFTER DELETE
             ON `detail_penjualan` FOR EACH ROW
             BEGIN
-                IF NEW.jumlah_jual IS NOT NULL THEN
-                    UPDATE `obat`
-                    SET stok = stok - NEW.jumlah_jual
-                    WHERE id = NEW.id_obat;
-                END IF;
+                UPDATE `penjualan`
+                SET total_jual = (SELECT SUM(jumlah_jual) FROM `detail_penjualan` WHERE id_penjualan = OLD.id_penjualan)
+                WHERE id = OLD.id_penjualan;
             END
         ');
     }
@@ -33,6 +30,6 @@ return new class extends Migration
     public function down(): void
     {
         //
-        DB::unprepared('DROP TRIGGER `min_stock_obat_penjualan' );
+        DB::unprepared('DROP TRIGGER `total_penjualan_delete`');
     }
 };

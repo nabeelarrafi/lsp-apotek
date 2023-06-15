@@ -81,7 +81,7 @@ body {
 }
 
 </style>
-<body>
+<body style="background-image: url(/public/vendor/adminlte/dist/img/background.jpg);">
     <div class="container">
         <div class="content">
             <h1 class="title">Welcome @can('pemilik-only')<b>back!</b>@endcan</h1>
