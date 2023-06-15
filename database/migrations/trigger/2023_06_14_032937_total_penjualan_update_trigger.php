@@ -21,7 +21,7 @@ return new class extends Migration
                 IF NEW.jumlah_jual IS NOT NULL THEN
                     IF NEW.id_penjualan <> OLD.id_penjualan THEN
                         CALL sum_total_penjualan(OLD.id_penjualan);
-                        CALL minus_obat(OLD.jumlah_jual, OLD.id_obat);
+                        CALL plus_obat(OLD.jumlah_jual, OLD.id_obat);
                     END IF;
                         CALL sum_total_penjualan(NEW.id_penjualan);
                         CALL minus_obat(NEW.jumlah_jual, NEW.id_obat);

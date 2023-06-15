@@ -20,11 +20,11 @@
                     <thead>
                         <tr>
                             <th>No.</th>
+                            <th>No. Penjualan</th>
+                            <th>Nama Obat</th>
                             <th>Jumlah Jual</th>
                             <th>Harga Jual</th>
                             <th>Sub Total Jual</th>
-                            <th>No. Penjualan</th>
-                            <th>Nama Obat</th>
                             @can('kasir-only')<th>Opsi</th>@endcan
                         </tr>
                     </thead>
@@ -32,11 +32,11 @@
                         @foreach($detail_penjualan as $key => $sk)
                         <tr>
                             <td>{{$key+1}}</td>
+                            <td>{{$sk->fpenjualan->nonota_jual}}</td>
+                            <td>{{$sk->fobat->nama_obat}}</td>
                             <td>{{$sk->jumlah_jual}}</td>
                             <td>{{$sk->harga_jual}}</td>
                             <td>{{$sk->sub_total_jual}}</td>
-                            <td>{{$sk->fpenjualan->nonota_jual}}</td>
-                            <td>{{$sk->fobat->nama_obat}}</td>
                             @can('kasir-only')<td>
                                 <a href="{{route('detail_penjualan.edit', $sk)}}" class="btn btn-primary btn-xs">
                                     Edit

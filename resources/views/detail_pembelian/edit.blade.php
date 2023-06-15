@@ -167,11 +167,35 @@
     $('#example1').DataTable({
         "responsive": true,
     });
+
+    let idPembelian = document.getElementById('id_pembelian');
+    let noNotaBeli = document.getElementById('nonota_beli');
+    let hargaBeli = document.getElementById('harga_beli');
+    let jumlahBeli = document.getElementById('jumlah_beli');
+    let subTotalBeli = document.getElementById('sub_total_beli');
+    let persenMarginJual = document.getElementById('persen_margin_jual');
+
+
+    jumlahBeli.addEventListener('change', function(){
+        return subTotalBeli.value = this.value*hargaBeli.value - this.value*hargaBeli.value*(persenMarginJual.value/100); 
+    })
+
+    persenMarginJual.addEventListener('change', function(){
+        return subTotalBeli.value = hargaBeli.value*jumlahBeli.value - hargaBeli.value*jumlahBeli.value*(this.value/100); 
+    })
+
+    hargaBeli.addEventListener('change', function(){
+        return subTotalBeli.value = this.value*jumlahBeli.value - this.value*jumlahBeli.value*(persenMarginJual.value/100); 
+    })
     //Fungsi pilih untuk memilih data bidang studi dan mengirimkan data Bidang Studi dari Modal ke form tambah
 
+    // function pilih(id, pembelian) {
+    //     document.getElementById('id_pembelian').value = id
+    //     document.getElementById('nonota_beli').value = pembelian
+    // }
     function pilih(id, pembelian) {
-        document.getElementById('id_pembelian').value = id
-        document.getElementById('nonota_beli').value = pembelian
+        idPembelian.value = id
+        noNotaBeli.value = pembelian
     }
 
 

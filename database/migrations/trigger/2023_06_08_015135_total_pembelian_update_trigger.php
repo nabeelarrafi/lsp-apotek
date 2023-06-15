@@ -21,7 +21,7 @@ return new class extends Migration
                 IF NEW.jumlah_beli IS NOT NULL THEN
                     IF NEW.id_pembelian <> OLD.id_pembelian THEN
                         CALL sum_total_pembelian(OLD.id_pembelian);
-                        CALL plus_obat(OLD.jumlah_beli, OLD.id_obat);
+                        CALL minus_obat(OLD.jumlah_beli, OLD.id_obat);
                     END IF;
                     CALL sum_total_pembelian(NEW.id_pembelian);
                     CALL plus_obat(NEW.jumlah_beli, NEW.id_obat);

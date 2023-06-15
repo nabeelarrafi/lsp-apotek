@@ -50,7 +50,7 @@
             "@php artisan key:generate --ansi"
         ],
         "migrate:fresh": [
-            "@php artisan migrate:fresh --path=database/migrations --path=database/migrations/function --path=database/migrations/trigger --seed"
+            "@php artisan migrate:fresh --path=database/migrations --path=database/migrations/function --path=database/migrations/trigger"
         ],
         "migrate": [
             "@php artisan migrate --path=database/migrations --path=database/migrations/function --path=database/migrations/trigger"
