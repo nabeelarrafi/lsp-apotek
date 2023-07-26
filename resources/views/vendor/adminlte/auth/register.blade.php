@@ -102,7 +102,7 @@
 @section('auth_footer')
     <p class="my-0">
         <a href="{{ $login_url }}">
-            Sign In
+            Login
         </a>
     </p>
 @stop

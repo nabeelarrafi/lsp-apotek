@@ -92,9 +92,9 @@ body {
                     @auth
                         <a href="{{ url('/home') }}" class="welcome">Go to Dasboard</a>
                     @else
-                        <a href="{{ route('login') }}" class="welcome">Sign In</a>
+                        <a href="{{ route('login') }}" class="welcome">Login</a>
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="welcome">Sign Up</a>
+                            <a href="{{ route('register') }}" class="welcome">Register</a>
                         @endif
                     @endauth
                 </div>
